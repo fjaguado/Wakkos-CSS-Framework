@@ -5,16 +5,27 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		// CONFIG ===================================/
 		watch: {
-			less: {
+			css: {
 				files: ['less/**/*.less'],
 				tasks: ['less:dev'],
 				options: {
-					nospawn: true
+					nospawn: true,
+					livereload: true,
 				}
 			},
-			concat: {
+			js: {
 				files: ['src/js/globals.js','src/js/events.js','src/js/functions/**/*.js'],
-				tasks: ['concat','uglify:prod']
+				tasks: ['concat','uglify:prod'],
+				options: {
+					livereload: true
+				}
+			},
+			webpage: {
+				files: ['**/*.html'],
+				tasks: [],
+				options: {
+					livereload: true
+				}
 			}
 		},
 		less: {
@@ -64,23 +75,31 @@ module.exports = function(grunt) {
                 windowsTile: true,
                 tileBlackWhite: false,
                 tileColor: "auto"
-                //html: 'build/out/index.html',
-                //HTMLPrefix: "/images/icons/"
             },
             icons: {
                 src: 'src/images/logo.jpg',
                 dest: 'img/favicons'
             }
         },
-   });
-   // DEPENDENT PLUGINS =========================/
-   grunt.loadNpmTasks('grunt-contrib-watch');
-   grunt.loadNpmTasks('grunt-contrib-less');
-   grunt.loadNpmTasks('grunt-contrib-uglify');
-   grunt.loadNpmTasks('grunt-contrib-concat');
-   grunt.loadNpmTasks('grunt-favicons');
-   // TASKS =====================================/
-   grunt.registerTask('default', [
+        web_server: {
+			options: {
+				cors: true,
+				port: 8000,
+				nevercache: true,
+				logRequests: true
+			},
+			foo: 'bar' // For some reason an extra key with a non-object value is necessary
+		},
+	});
+	// DEPENDENT PLUGINS =========================/
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-favicons');
+	grunt.loadNpmTasks('grunt-web-server');
+	// TASKS =====================================/
+	grunt.registerTask('default', [
 		'less:prod',
 		'concat:prod',
 		'uglify:prod',
