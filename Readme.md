@@ -7,6 +7,7 @@ Añadida sección JavaScript basada en el artículo [JavaScript orientado a even
 Acciones que realiza Grunt:
 ```bash
 $grunt watch
+```
 
 Si se produce algún cambio en algún fichero less, compila los ficheros sin minificar. El fichero resultante se hayará en css/app.css de la raíz.
 
@@ -15,8 +16,9 @@ Si se produce algún cambio en algún fichero JavaScript, concatena todos los fi
 1. scripts.js es el fichero solo concatenado. Ideal para debugación.
 2. scripts.min.js es el fichero concatenado, minificado y ofuscado. Es el fichero de producción para la versión final.
 
-```
+```bash
 $grunt
+```
 
 1. Compila todos los ficheros less y minifica el resultado. El fichero generado es app.css en el directorio css de la raíz.
 2. Concatena todos los ficheros JavaScript, los minifica y los ofusca. El fichero generado es scripts.min.js en el directorio js de la raíz.
@@ -31,5 +33,6 @@ Una vez clonado el repositorio:
 
 ```bash
 $npm update
+```
 
 Para que nodeJS instale todos los paquetes de Grunt necesarios.
