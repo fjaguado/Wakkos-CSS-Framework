@@ -19,14 +19,12 @@ Esto instalará todas las dependencias del fichero `package.json`.
 
 Dentro de Gruntfile.js tenemos las diferentes tareas configuradas. Dichas tareas las podemos ejecutar por separado o invocar a otra tarea configurada con `registerTask` que no es más que una lista de tareas a realizar. 
 
-###less
+###compass
 
-Esta tarea se encarga de compilar nuestros ficheros `less` a un fichero `css`. Está separada en dos entornos:
+Esta tarea se encarga de compilar nuestros ficheros `scss` a un fichero `css`. Está separada en dos entornos:
 
 1. dev: el entorno de desarrollo. En este entorno no comprimirá el `css`, teniendo como resultado un `css` legible para depuración.
 2. prod: el entorno de producción. Aquí se comprimirá y minimizará el `css` teniendo un fichero mínimo listo para producción.
-
-En ambos casos el fichero creado será `css/app.css`, según configuración.
 
 ###concat
 
@@ -50,7 +48,7 @@ Para arrancar el servidor solo hemos de ejecutar `grunt web_server` y seguidamen
 
 Esta tarea es por lo que es tan útil Grunt. Según la configuración que hay acutalmente, está a la espera de cambios en los ficheros `less`, `javascript` y `html` para realizar ciertas acciones. Para el total funcionamiento de `watch` en este proyecto, será indispensable instalar la extensión [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) en Google Chrome.
 
-1. `css`: está pendiente de cambios en los ficheros `less`. En caso de detectar algún cambio, ejecuta automáticamente la compilación y recarga el navegador ( Chrome ) automáticamente; si la extensión está activa. 
+1. `css`: está pendiente de cambios en los ficheros `scss`. En caso de detectar algún cambio, ejecuta la compilación y recarga el navegador ( Chrome ) automáticamente; si la extensión está activa. 
 2. `js`: concatena, minimiza y ofusca los ficheros `JavaScript` del proyecto. También recarga el navegador. 
 3. `webpages`: recarga el navegador cuando se guardan cambios en cualquier fichero `html` del proyecto.
 
@@ -58,7 +56,7 @@ Esta tarea es por lo que es tan útil Grunt. Según la configuración que hay ac
 
 Por último tenemos la acción por defecto. Dicha acción se ejecutará si lanzamos `grunt` sin argumentos y ejecutará las siguientes tareas: 
 
-1.`less:prod`
+1.`compass:prod`
 2.`concat:prod`
 3.`uglify:prod`
 4.`favicons`
