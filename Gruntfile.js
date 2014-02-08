@@ -6,10 +6,9 @@ module.exports = function(grunt) {
 		// CONFIG ===================================/
 		watch: {
 			css: {
-				files: ['less/**/*.less'],
-				tasks: ['less:dev'],
+				files: ['src/scss/**/*.scss'],
+				tasks: ['compass:dev'],
 				options: {
-					nospawn: true,
 					livereload: true,
 				}
 			},
@@ -28,28 +27,23 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		less: {
-			dev:{
-				options: {
-					compress: false,
-					yuicompress: false,
-					optimization: 2
-				},
-				files:{
-					"css/app.css" :  "src/less/style.less"
-				}
-			},
-			prod:{
-				options: {
-					compress: true,
-					yuicompress: true,
-					optimization: 2
-				},
-				files:{
-					"css/app.css" :  "src/less/style.less"
-				}
-			},
-		},
+		compass: {
+            prod: {
+                options: {
+                    sassDir: 'src/scss',
+                    cssDir: 'css',
+                    environment: 'production',
+                    force: true
+                }
+            },
+            dev: {
+                options: {
+                    sassDir: 'src/scss',
+                    cssDir: 'css',
+                    force: true
+                }
+            }
+        },
 		concat: {
 			options:{
 				separator: '\n\r'
@@ -93,14 +87,14 @@ module.exports = function(grunt) {
 	});
 	// DEPENDENT PLUGINS =========================/
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-favicons');
 	grunt.loadNpmTasks('grunt-web-server');
 	// TASKS =====================================/
 	grunt.registerTask('default', [
-		'less:prod',
+		'compass:prod',
 		'concat:prod',
 		'uglify:prod',
 		'favicons'

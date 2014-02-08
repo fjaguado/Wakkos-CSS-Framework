@@ -1,5 +1,5 @@
 {
-  "name": "wakkos-framework grunt edition",
+  "name": "wakkos-framework-grunt-edition",
   "version": "0.0.2",
   "description": "WTF this is empty!",
   "main": "index.html",
@@ -37,6 +37,7 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-favicons": "~0.6.0",
     "grunt-contrib-connect": "~0.6.0",
-    "grunt-web-server": "~1.2.3"
+    "grunt-web-server": "~1.2.3",
+    "grunt-contrib-compass": "~0.7.1"
   }
 }

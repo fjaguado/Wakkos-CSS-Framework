@@ -1,10 +1,11 @@
+@charset "UTF-8";
 /*------------------------------------*\
     $STYLE
 \*------------------------------------*/
 /**
- * Aquí incluímos todos los módulos (archivos .less) que se can
+ * Aquí incluímos todos los módulos (archivos .scss) que se can
  * a compilar en el CSS definitivo: /css/style.css.
- * Si no usas algún módulo, es recomendable que elimines 
+ * Si no usas algún módulo, es recomendable que elimines
  * o comentes su inclusión para no tener estilos innecesarios en tu CSS final
  * y optimizar lo máximo posible.
  */
@@ -21,7 +22,7 @@
  * Helpers....................... Clases de ayuda
 
  * Reset......................... Reinicio de valores CSS
- 
+
  * Fuentes....................... Fuentes que vamos a importar
 
  * Links......................... Formas y estilos de los links
@@ -45,48 +46,45 @@
  * Texturas...................... Badges, cajas y wells
 
  * Breakpoints................... Importamos breakpoints basados en las variables @bp$
- 
- * Patron........................ Estilos para la guía de patrones
 
- * Debug......................... Utilizado para revisar el marcado.
+ * Patron........................ Estilos para la guía de patrones
  */
 /*------------------------------------*\
     $VARIABLES
 \*------------------------------------*/
+/* Colores sociales -> son los colores corporativos, pero cambiadlos 
+ * si hace falta. (también podéis añadir más)  ///////////////////////
+ */
 /*------------------------------------*\
     $MIXINS
 \*------------------------------------*/
-.displayflex {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
 /*------------------------------------*\
     $HELPERS
 \*------------------------------------*/
-/** 
-  * The ghost, nudged to maintain perfect centering 
-  */
+/**
+* The ghost, nudged to maintain perfect centering
+*/
+/* line 15, ../src/scss/lib/_helpers.scss */
 .vcenter:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
-/** 
-  * Escondemos el texto solo VISUALMENTE
-  */
-/** 
-  * Escondemos el texto de VISUALMENTE y SCREENREADERS
-  */
-/** 
-  * Escondemos pero mantenemos layout.
-  */
-/** 
-  * Visualmente escondido, pero se puede detectar con teclado (focus).
-  */
+
+/**
+* Escondemos el texto solo VISUALMENTE
+*/
+/**
+* Escondemos el texto de VISUALMENTE y SCREENREADERS
+*/
+/**
+* Escondemos pero mantenemos layout.
+*/
+/**
+* Visualmente escondido, pero se puede detectar con teclado (focus).
+*/
+/* line 53, ../src/scss/lib/_helpers.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   position: static;
@@ -96,22 +94,34 @@
   margin: 0;
   overflow: visible;
 }
-/** 
-  * Centrar y dar un ancho máximo igual a @pagemaxwidth.
-  */
-.max-width {
+
+/**
+* Centrar y dar un ancho máximo igual a $pagemaxwidth.
+*/
+/* line 66, ../src/scss/lib/_helpers.scss */
+.max-width, section {
   margin-left: auto;
   margin-right: auto;
   max-width: 1024px;
 }
-/** 
-  * Clear floats.
-  */
-.clearfix::after {
-  content: "";
+
+/**
+* Clear floats.
+*/
+/* line 76, ../src/scss/lib/_helpers.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 80, ../src/scss/lib/_helpers.scss */
+.clearfix:before, .clearfix:after {
   display: table;
+  content: "";
+}
+/* line 84, ../src/scss/lib/_helpers.scss */
+.clearfix:after {
   clear: both;
 }
+
 /*------------------------------------*\
     $RESET
 \*------------------------------------*/
@@ -124,6 +134,7 @@
 /**
  * Correct `block` display not defined in IE 8/9.
  */
+/* line 29, ../src/scss/componentes/_reset.scss */
 article,
 aside,
 details,
@@ -138,30 +149,37 @@ section,
 summary {
   display: block;
 }
+
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */
+/* line 39, ../src/scss/componentes/_reset.scss */
 audio,
 canvas,
 video {
   display: inline-block;
 }
+
 /**
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
+/* line 48, ../src/scss/componentes/_reset.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
+
 /**
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
+/* line 59, ../src/scss/componentes/_reset.scss */
 [hidden],
 template {
   display: none;
 }
+
 /* ==========================================================================
    Base
    ========================================================================== */
@@ -170,6 +188,7 @@ template {
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+/* line 73, ../src/scss/componentes/_reset.scss */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -178,34 +197,43 @@ html {
   -webkit-text-size-adjust: 100%;
   /* 2 */
 }
+
 /**
  * Remove default margin.
  */
+/* line 83, ../src/scss/componentes/_reset.scss */
 body {
   margin: 0;
 }
+
 /* ==========================================================================
    Links
    ========================================================================== */
 /**
  * Remove the gray background color from active links in IE 10.
  */
+/* line 95, ../src/scss/componentes/_reset.scss */
 a {
   background: transparent;
 }
+
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
+/* line 103, ../src/scss/componentes/_reset.scss */
 a:focus {
   outline: thin dotted;
 }
+
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
+/* line 112, ../src/scss/componentes/_reset.scss */
 a:active,
 a:hover {
   outline: 0;
 }
+
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -213,47 +241,60 @@ a:hover {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 125, ../src/scss/componentes/_reset.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
+/* line 134, ../src/scss/componentes/_reset.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
+
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 143, ../src/scss/componentes/_reset.scss */
 b,
 strong {
   font-weight: bold;
 }
+
 /**
  * Address styling not present in Safari 5 and Chrome.
  */
+/* line 151, ../src/scss/componentes/_reset.scss */
 dfn {
   font-style: italic;
 }
+
 /**
  * Address differences between Firefox and other browsers.
  */
+/* line 159, ../src/scss/componentes/_reset.scss */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
+
 /**
  * Address styling not present in IE 8/9.
  */
+/* line 169, ../src/scss/componentes/_reset.scss */
 mark {
   background: #ff0;
   color: #000;
 }
+
 /**
  * Correct font family set oddly in Safari 5 and Chrome.
  */
+/* line 181, ../src/scss/componentes/_reset.scss */
 code,
 kbd,
 pre,
@@ -261,27 +302,35 @@ samp {
   font-family: monospace, serif;
   font-size: 1em;
 }
+
 /**
  * Improve readability of pre-formatted text in all browsers.
  */
+/* line 190, ../src/scss/componentes/_reset.scss */
 pre {
   white-space: pre-wrap;
 }
+
 /**
  * Set consistent quote types.
  */
+/* line 198, ../src/scss/componentes/_reset.scss */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
+
 /**
  * Address inconsistent and variable font size in all browsers.
  */
+/* line 206, ../src/scss/componentes/_reset.scss */
 small {
   font-size: 80%;
 }
+
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
+/* line 215, ../src/scss/componentes/_reset.scss */
 sub,
 sup {
   font-size: 75%;
@@ -289,62 +338,78 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
+
+/* line 222, ../src/scss/componentes/_reset.scss */
 sup {
   top: -0.5em;
 }
+
+/* line 226, ../src/scss/componentes/_reset.scss */
 sub {
   bottom: -0.25em;
 }
+
 /* ==========================================================================
    Embedded content
    ========================================================================== */
 /**
  * Remove border when inside `a` element in IE 8/9.
  */
+/* line 238, ../src/scss/componentes/_reset.scss */
 img {
   border: 0;
 }
+
 /**
  * Correct overflow displayed oddly in IE 9.
  */
+/* line 246, ../src/scss/componentes/_reset.scss */
 svg:not(:root) {
   overflow: hidden;
 }
+
 /* ==========================================================================
    Figures
    ========================================================================== */
 /**
  * Address margin not present in IE 8/9 and Safari 5.
  */
+/* line 258, ../src/scss/componentes/_reset.scss */
 figure {
   margin: 0;
 }
+
 /* ==========================================================================
    Forms
    ========================================================================== */
 /**
  * Define consistent border, margin, and padding.
  */
+/* line 270, ../src/scss/componentes/_reset.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
+
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
+/* line 281, ../src/scss/componentes/_reset.scss */
 legend {
   border: 0;
   /* 1 */
   padding: 0;
   /* 2 */
 }
+
 /**
  * 1. Correct font family not being inherited in all browsers.
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 295, ../src/scss/componentes/_reset.scss */
 button,
 input,
 select,
@@ -356,24 +421,29 @@ textarea {
   margin: 0;
   /* 3 */
 }
+
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
+/* line 307, ../src/scss/componentes/_reset.scss */
 button,
 input {
   line-height: normal;
 }
+
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
+/* line 319, ../src/scss/componentes/_reset.scss */
 button,
 select {
   text-transform: none;
 }
+
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  *    and `video` controls.
@@ -381,6 +451,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
+/* line 334, ../src/scss/componentes/_reset.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -390,17 +461,21 @@ input[type="submit"] {
   cursor: pointer;
   /* 3 */
 }
+
 /**
  * Re-set default cursor for disabled elements.
  */
+/* line 344, ../src/scss/componentes/_reset.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
+
 /**
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
+/* line 354, ../src/scss/componentes/_reset.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -408,11 +483,13 @@ input[type="radio"] {
   padding: 0;
   /* 2 */
 }
+
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
+/* line 365, ../src/scss/componentes/_reset.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -421,61 +498,74 @@ input[type="search"] {
   /* 2 */
   box-sizing: content-box;
 }
+
 /**
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
+/* line 378, ../src/scss/componentes/_reset.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
 /**
  * Remove inner padding and border in Firefox 4+.
  */
+/* line 387, ../src/scss/componentes/_reset.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
+
 /**
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
+/* line 397, ../src/scss/componentes/_reset.scss */
 textarea {
   overflow: auto;
   /* 1 */
   vertical-align: top;
   /* 2 */
 }
+
 /* ==========================================================================
    Tables
    ========================================================================== */
 /**
  * Remove most spacing between table cells.
  */
+/* line 410, ../src/scss/componentes/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* line 416, ../src/scss/componentes/_reset.scss */
 ul li {
   list-style-type: none;
 }
+
 /*------------------------------------*\
     $FUENTES
 \*------------------------------------*/
 /*
- * Por defecto incluyo una fuente de icomoon (http://icomoon.io/) 
+ * Por defecto incluyo una fuente de icomoon (http://icomoon.io/)
  * con 5 iconos que se encuentra en la carpeta /fonts.
- * Ve y adàptalos a tu web.  
+ * Ve y adàptalos a tu web.
  */
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot');
-  src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg#icomoon') format('svg');
+  src: url("fonts/icomoon.eot");
+  src: url("fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"), url("fonts/icomoon.svg#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
+/* line 21, ../src/scss/componentes/_fuentes.scss */
 [data-icon]:before {
   font-family: 'icomoon';
   content: attr(data-icon);
@@ -487,17 +577,15 @@ ul li {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-cloud-download,
-.icon-cloud-upload,
-.icon-user,
-.icon-css3,
-.icon-eye {
+/* line 39, ../src/scss/componentes/_fuentes.scss */
+.icon-cloud-download, .icon-cloud-upload, .icon-user, .icon-css3, .icon-eye {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -507,46 +595,63 @@ you can use the generic selector below, but it's slower:
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
+
+/* line 49, ../src/scss/componentes/_fuentes.scss */
 .icon-cloud-download:before {
   content: "\e009";
 }
+
+/* line 52, ../src/scss/componentes/_fuentes.scss */
 .icon-cloud-upload:before {
   content: "\e000";
 }
+
+/* line 55, ../src/scss/componentes/_fuentes.scss */
 .icon-user:before {
   content: "\e001";
 }
+
+/* line 58, ../src/scss/componentes/_fuentes.scss */
 .icon-css3:before {
   content: "\f13c";
 }
+
+/* line 61, ../src/scss/componentes/_fuentes.scss */
 .icon-eye:before {
   content: "\e002";
 }
+
 /*------------------------------------*\
     $LINKS
 \*------------------------------------*/
+/* line 4, ../src/scss/componentes/_links.scss */
 a {
   text-decoration: none;
   color: #00a1cb;
 }
+/* line 8, ../src/scss/componentes/_links.scss */
 a:visited {
   color: #00a1cb;
 }
+/* line 12, ../src/scss/componentes/_links.scss */
 a:hover {
   text-decoration: underline;
   color: #007998;
 }
+/* line 17, ../src/scss/componentes/_links.scss */
 a:focus {
   outline: thin dotted;
   color: #007998;
 }
-a:hover,
-a:active {
+/* line 23, ../src/scss/componentes/_links.scss */
+a:hover, a:active {
   outline: 0;
 }
+
 /*------------------------------------*\
     $TABLAS
 \*------------------------------------*/
+/* line 5, ../src/scss/componentes/_tablas.scss */
 table {
   width: 100%;
   max-width: 100%;
@@ -555,6 +660,7 @@ table {
   border-spacing: 0;
   background-color: transparent;
 }
+/* line 14, ../src/scss/componentes/_tablas.scss */
 table th,
 table td {
   padding: 8px;
@@ -565,21 +671,26 @@ table td {
   line-height: 1.5em;
   text-align: left;
 }
+/* line 22, ../src/scss/componentes/_tablas.scss */
 table th {
   font-weight: bold;
 }
+/* line 25, ../src/scss/componentes/_tablas.scss */
 table thead th {
   vertical-align: bottom;
 }
+/* line 31, ../src/scss/componentes/_tablas.scss */
 table colgroup + thead tr:first-child th,
 table colgroup + thead tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
   border-top: 0;
 }
+/* line 34, ../src/scss/componentes/_tablas.scss */
 table tbody + tbody {
   border-top: 2px solid #98eaff;
 }
+/* line 38, ../src/scss/componentes/_tablas.scss */
 table tbody tr td,
 table tbody tr th {
   -webkit-transition: background-color 0.25s 0 linear;
@@ -588,33 +699,43 @@ table tbody tr th {
   -o-transition: background-color 0.25s 0 linear;
   transition: background-color 0.25s 0 linear;
 }
+/* line 42, ../src/scss/componentes/_tablas.scss */
 table tbody tr:hover td,
 table tbody tr:hover th {
   background-color: #cbf4ff;
 }
+
+/* line 51, ../src/scss/componentes/_tablas.scss */
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
 }
+
+/* line 57, ../src/scss/componentes/_tablas.scss */
 .table-bordered {
   border: 1px solid #98eaff;
   border-left: 0;
   border-collapse: separate;
   *border-collapse: collapsed;
 }
+/* line 64, ../src/scss/componentes/_tablas.scss */
 .table-bordered th,
 .table-bordered td {
   border-left: 1px solid #98eaff;
 }
+/* line 69, ../src/scss/componentes/_tablas.scss */
 .table-bordered thead:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child td {
   border-top: 0;
 }
+
+/* line 78, ../src/scss/componentes/_tablas.scss */
 .table-striped tbody tr:nth-child(odd) td,
 .table-striped tbody tr:nth-child(odd) th {
   background-color: #feffff;
 }
+
 /*------------------------------------*\
     $BOTONES
 \*------------------------------------*/
@@ -622,13 +743,14 @@ table tbody tr:hover th {
  * Definimos los botones y sus variantes
  */
 /**
- * .btn es la clase principal para definir un botón
- */
+* .btn es la clase principal para definir un botón
+*/
+/* line 12, ../src/scss/componentes/_botones.scss */
 .btn {
   display: inline-block;
   *zoom: 1;
   line-height: 3em;
-  color: #262626;
+  color: darkergrey;
   text-align: center;
   vertical-align: middle;
   font-size: 100%;
@@ -643,21 +765,24 @@ table tbody tr:hover th {
   padding-right: 1em;
   padding-left: 1em;
   border-radius: 2px;
-  /**
- 	* Nadie quiere un botón con texto subrayado cuando
- 	* hacemos hover.
- 	*/
+  	/**
+   	* Nadie quiere un botón con texto subrayado cuando
+   	* hacemos hover.
+   	*/
 }
+/* line 37, ../src/scss/componentes/_botones.scss */
 .btn:hover {
   text-decoration: none;
 }
-.btn:active,
-.btn:focus {
+/* line 41, ../src/scss/componentes/_botones.scss */
+.btn:active, .btn:focus {
   outline: none;
 }
+/* line 44, ../src/scss/componentes/_botones.scss */
 .btn:visited {
-  color: #262626;
+  color: darkergrey;
 }
+
 /*------------------------------------*\
     $VARIANTES
 \*------------------------------------*/
@@ -668,89 +793,108 @@ table tbody tr:hover th {
 /**
 * Inputs con estilo de botones
 */
+/* line 61, ../src/scss/componentes/_botones.scss */
 input[type="submit"].btn:hover {
   border-color: #cccccc;
 }
+
 /**
-* Extiende .btn
 * Botón no disponible
 */
+/* line 68, ../src/scss/componentes/_botones.scss */
 .btn--disabled {
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
   cursor: default;
 }
+
 /**
-* Extiende .btn
 * Botón de Error
 */
+/* line 75, ../src/scss/componentes/_botones.scss */
 .btn--error {
   background-color: #da4f49;
   color: #48110f;
 }
+/* line 78, ../src/scss/componentes/_botones.scss */
 .btn--error:hover {
   color: #fcf3f3;
 }
+/* line 80, ../src/scss/componentes/_botones.scss */
 .btn--error:visited {
   color: #48110f;
 }
+
 /**
-* Extiende .btn
 * Botón de Info
 */
+/* line 88, ../src/scss/componentes/_botones.scss */
 .btn--info {
   background-color: #a5dddf;
   color: #308588;
 }
+/* line 91, ../src/scss/componentes/_botones.scss */
 .btn--info:hover {
-  color: #ffffff;
+  color: white;
 }
+/* line 93, ../src/scss/componentes/_botones.scss */
 .btn--info:visited {
   color: #308588;
 }
+
 /**
-* Extiende .btn
 * Botón principal
 */
+/* line 104, ../src/scss/componentes/_botones.scss */
 .btn--primary {
   background-color: #00a1cb;
-  color: #ffffff;
+  color: white;
 }
+/* line 107, ../src/scss/componentes/_botones.scss */
 .btn--primary:hover {
   color: #98eaff;
 }
+/* line 109, ../src/scss/componentes/_botones.scss */
 .btn--primary:visited {
-  color: #000000;
+  color: black;
 }
+
 /**
-* Extiende .btn
 * Botón de OK
 */
+/* line 118, ../src/scss/componentes/_botones.scss */
 .btn--success {
   background-color: #5bb75b;
   color: #153115;
 }
+/* line 121, ../src/scss/componentes/_botones.scss */
 .btn--success:hover {
   color: #e9f5e9;
 }
+/* line 123, ../src/scss/componentes/_botones.scss */
 .btn--success:visited {
   color: #153115;
 }
+
 /**
-* Extiende .btn
 * Botón de advertencia
 */
+/* line 133, ../src/scss/componentes/_botones.scss */
 .btn--warning {
   background-color: #faa732;
   color: #5e3802;
 }
+/* line 136, ../src/scss/componentes/_botones.scss */
 .btn--warning:hover {
   color: #fffcf9;
 }
+/* line 138, ../src/scss/componentes/_botones.scss */
 .btn--warning:visited {
   color: #5e3802;
 }
+
+/* line 146, ../src/scss/componentes/_botones.scss */
 .btn--inactive,
 .btn--inactive:hover,
 .btn--inactive:active,
@@ -761,56 +905,60 @@ input[type="submit"].btn:hover {
   cursor: default;
   cursor: text;
 }
+
 /*------------------------------------*\
     $TAMAÑOS
 \*------------------------------------*/
 /**
  * Variantes de los botones por tamaño.
- * Todas extienden .btn
+ *
  */
+/* line 164, ../src/scss/componentes/_botones.scss */
 .btn--mini {
   padding-right: 0.5em;
   padding-left: 0.5em;
   line-height: 2;
 }
+
+/* line 170, ../src/scss/componentes/_botones.scss */
 .btn--small {
   padding-right: 1.5em;
   padding-left: 1.5em;
   line-height: 3;
 }
+
+/* line 176, ../src/scss/componentes/_botones.scss */
 .btn--large {
   padding-right: 3em;
   padding-left: 3em;
   line-height: 4;
 }
+
 /*------------------------------------*\
     $GRUPOS
 \*------------------------------------*/
 /**
  * Con esta clase podemos agrupar los botones
  * en grupos horizontales.
- * el contenedor de los elementos con las clases
- * .btn debe contener la clase .btn__group:
-	
-	<div class="btn__group">
-		<a class="btn">Botón 1</a>
-		<a class="btn">Botón 1</a>
-		<a class="btn">Botón 1</a>
-	</div>
  *
  */
-.btn__group {
+/* line 193, ../src/scss/componentes/_botones.scss */
+.btn--group {
   position: relative;
   *zoom: 1;
   *margin-left: .3em;
 }
-.btn__group .btn {
+
+/* line 198, ../src/scss/componentes/_botones.scss */
+.btn--group .btn {
   position: relative;
   border-radius: 0;
   float: left;
   margin-left: -1px;
 }
-.btn__group .btn:first-child {
+
+/* line 205, ../src/scss/componentes/_botones.scss */
+.btn-group .btn:first-child {
   margin-left: 0;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
@@ -828,7 +976,9 @@ input[type="submit"].btn:hover {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
-.btn__group .btn:last-child {
+
+/* line 209, ../src/scss/componentes/_botones.scss */
+.btn-group .btn:last-child {
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
   -webkit-border-bottom-left-radius: 0;
@@ -845,7 +995,9 @@ input[type="submit"].btn:hover {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
-.btn__group .btn.large:first-child {
+
+/* line 212, ../src/scss/componentes/_botones.scss */
+.btn-group .btn.large:first-child {
   margin-left: 0;
   -webkit-border-top-right-radius: 2px;
   -webkit-border-bottom-right-radius: 0;
@@ -863,7 +1015,9 @@ input[type="submit"].btn:hover {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
-.btn__group .btn.large:last-child {
+
+/* line 216, ../src/scss/componentes/_botones.scss */
+.btn-group .btn.large:last-child {
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 2px;
   -webkit-border-bottom-left-radius: 0;
@@ -880,24 +1034,32 @@ input[type="submit"].btn:hover {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
+
 /*------------------------------------*\
     $TAMAÑOS-FUENTES
 \*------------------------------------*/
 /**
  * Modificadores del tamaño de la fuente  de los botones.
  */
+/* line 228, ../src/scss/componentes/_botones.scss */
 .btn--alpha {
   font-size: 3rem;
 }
+
+/* line 232, ../src/scss/componentes/_botones.scss */
 .btn--beta {
   font-size: 2rem;
 }
+
+/* line 236, ../src/scss/componentes/_botones.scss */
 .btn--gamma {
   font-size: 1rem;
 }
+
 /*------------------------------------*\
     $ELEMENTOS
 \*------------------------------------*/
+/* line 6, ../src/scss/componentes/_elementos.scss */
 hr {
   clear: both;
   display: block;
@@ -907,41 +1069,55 @@ hr {
   border: 0;
   border-top: 1px solid #00c9fe;
 }
+
+/* line 17, ../src/scss/componentes/_elementos.scss */
 img {
   max-width: 100%;
   border-width: 0;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
+
+/* line 23, ../src/scss/componentes/_elementos.scss */
 .img-rounded {
   border-radius: 8px;
 }
+
+/* line 26, ../src/scss/componentes/_elementos.scss */
 .img-polaroid {
   padding: 12px;
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid #00c9fe;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+/* line 32, ../src/scss/componentes/_elementos.scss */
 .img-circle {
   border-radius: 100%;
 }
+
+/* line 37, ../src/scss/componentes/_elementos.scss */
 figure {
   margin-bottom: 1.5em;
 }
+/* line 40, ../src/scss/componentes/_elementos.scss */
 figure img {
   margin-bottom: 0.375em;
 }
+/* line 43, ../src/scss/componentes/_elementos.scss */
 figure figcaption {
   display: block;
   font-weight: normal;
   font-size: 14px;
   font-size: 0.875rem;
   font-style: italic;
-  color: #808080;
+  color: gray;
 }
+
 /*------------------------------------*\
     $TIPOGRAFÍA
 \*------------------------------------*/
+/* line 13, ../src/scss/componentes/_tipografia.scss */
 h1,
 h2,
 h3,
@@ -954,22 +1130,27 @@ h6 {
   color: inherit;
   text-rendering: optimizelegibility;
 }
+/* line 19, ../src/scss/componentes/_tipografia.scss */
 h1.altheader,
 h2.altheader,
 h3.altheader,
 h4.altheader,
 h5.altheader,
 h6.altheader {
-  color: #808080;
+  color: gray;
   text-transform: uppercase;
 }
+
+/* line 27, ../src/scss/componentes/_tipografia.scss */
 h1 small,
 h2 small,
 h3 small {
   font-weight: normal;
   display: block;
-  color: #808080;
+  color: gray;
 }
+
+/* line 33, ../src/scss/componentes/_tipografia.scss */
 h1,
 .h1 {
   margin-bottom: 0.75em;
@@ -977,6 +1158,8 @@ h1,
   font-size: 2rem;
   line-height: 1.2;
 }
+
+/* line 39, ../src/scss/componentes/_tipografia.scss */
 h2,
 .h2 {
   margin-bottom: 0.5em;
@@ -984,6 +1167,8 @@ h2,
   font-size: 1.5rem;
   line-height: 1.2;
 }
+
+/* line 45, ../src/scss/componentes/_tipografia.scss */
 h3,
 .h3 {
   margin-bottom: 0.375em;
@@ -991,6 +1176,8 @@ h3,
   font-size: 1.3125rem;
   line-height: 1.3;
 }
+
+/* line 51, ../src/scss/componentes/_tipografia.scss */
 h4,
 .h4 {
   margin-bottom: 0.25em;
@@ -998,24 +1185,31 @@ h4,
   font-size: 1.125rem;
   line-height: 1.25;
 }
+
+/* line 57, ../src/scss/componentes/_tipografia.scss */
 h5,
 .h5 {
   font-size: 16px;
   font-size: 1rem;
   margin-bottom: 0.25em;
 }
+
+/* line 62, ../src/scss/componentes/_tipografia.scss */
 h6,
 .h6 {
   margin-bottom: 0.25em;
   font-size: 14px;
   font-size: 0.875rem;
 }
+
+/* line 71, ../src/scss/componentes/_tipografia.scss */
 .header h1,
 .header h2,
 .header h3 {
   float: left;
   margin-right: 24px;
 }
+/* line 75, ../src/scss/componentes/_tipografia.scss */
 .header h1 a,
 .header h2 a,
 .header h3 a {
@@ -1026,13 +1220,16 @@ h6,
   padding: 4px 12px;
   font-size: 14px;
   font-size: 0.875rem;
-  background-color: #ffffff;
+  background-color: white;
 }
+/* line 84, ../src/scss/componentes/_tipografia.scss */
 .header h1:hover,
 .header h2:hover,
 .header h3:hover {
-  background-color: #ffffff;
+  background-color: white;
 }
+
+/* line 89, ../src/scss/componentes/_tipografia.scss */
 .header .a-rss,
 .header .a-rss:hover {
   float: left;
@@ -1044,6 +1241,8 @@ h6,
   white-space: nowrap;
   overflow: hidden;
 }
+
+/* line 103, ../src/scss/componentes/_tipografia.scss */
 p,
 ol,
 ul,
@@ -1052,85 +1251,120 @@ address {
   margin-bottom: 1.5em;
   line-height: 1.5em;
 }
+
+/* line 108, ../src/scss/componentes/_tipografia.scss */
 .intro {
   font-weight: bold;
 }
+
+/* line 112, ../src/scss/componentes/_tipografia.scss */
 small {
   font-size: 12px;
   font-size: 0.75rem;
-  color: #808080;
+  color: gray;
 }
+
+/* line 117, ../src/scss/componentes/_tipografia.scss */
 ul,
 ol {
-  margin: 0 0 1.5em -24px;
+  margin: 0 0 1.5em-pxToEm(24px);
   padding: 0 0 0 24px;
 }
+
+/* line 122, ../src/scss/componentes/_tipografia.scss */
 li ul,
 li ol {
   margin: 0;
 }
+
+/* line 127, ../src/scss/componentes/_tipografia.scss */
 blockquote {
-  margin: 0 0 1.5em -24px;
+  margin: 0 0 1.5em-pxToEm(24px);
   padding-left: 24px;
   border-left: 2px solid #00c9fe;
   font-family: Georgia, Times, "Times New Roman";
   font-style: normal;
 }
+/* line 133, ../src/scss/componentes/_tipografia.scss */
 blockquote p {
   font-size: 18px;
   font-size: 1.125rem;
-  color: #808080;
+  color: gray;
   font-style: italic;
 }
+
+/* line 140, ../src/scss/componentes/_tipografia.scss */
 q {
   quotes: none;
   font-style: italic;
 }
+
+/* line 147, ../src/scss/componentes/_tipografia.scss */
 blockquote p::before,
 blockquote p::after,
 q:before,
 q:after {
-  content: '"';
+  content: "";
 }
+
+/* line 150, ../src/scss/componentes/_tipografia.scss */
 cite {
   font-style: normal;
 }
+
+/* line 156, ../src/scss/componentes/_tipografia.scss */
 dl,
 dd {
   margin-bottom: 1.5em;
 }
+
+/* line 159, ../src/scss/componentes/_tipografia.scss */
 dt {
   font-weight: bold;
 }
+
+/* line 164, ../src/scss/componentes/_tipografia.scss */
 .dl-horizontal dt {
   float: left;
   clear: left;
   width: 20.25%;
   text-align: right;
 }
+/* line 170, ../src/scss/componentes/_tipografia.scss */
 .dl-horizontal dd {
   margin-left: 22.78%;
 }
+
+/* line 176, ../src/scss/componentes/_tipografia.scss */
 abbr[title] {
   border-bottom: 1px dotted #00c9fe;
   cursor: help;
 }
-b,
-strong {
+
+/* line 180, ../src/scss/componentes/_tipografia.scss */
+b, strong {
   font-weight: bold;
 }
+
+/* line 183, ../src/scss/componentes/_tipografia.scss */
 dfn {
   font-style: italic;
 }
+
+/* line 186, ../src/scss/componentes/_tipografia.scss */
 ins {
-  background-color: #ffffff;
-  color: #262626;
+  background-color: white;
+  color: darkergrey;
   text-decoration: none;
 }
+
+/* line 191, ../src/scss/componentes/_tipografia.scss */
 mark {
   background-color: yellow;
-  color: #262626;
+  color: darkergrey;
 }
+
+/* line 198, ../src/scss/componentes/_tipografia.scss */
 pre,
 code,
 kbd,
@@ -1140,11 +1374,15 @@ samp {
   font-size: 0.875rem;
   line-height: 1.5em;
 }
+
+/* line 203, ../src/scss/componentes/_tipografia.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+/* line 209, ../src/scss/componentes/_tipografia.scss */
 sub,
 sup {
   position: relative;
@@ -1153,17 +1391,34 @@ sup {
   line-height: 0;
   vertical-align: baselineheight;
 }
+
+/* line 215, ../src/scss/componentes/_tipografia.scss */
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
+
+/* line 218, ../src/scss/componentes/_tipografia.scss */
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
+
+/* line 223, ../src/scss/componentes/_tipografia.scss */
+.small {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+/* line 227, ../src/scss/componentes/_tipografia.scss */
+.huge {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
 /*------------------------------------*\
     $NAVEGACIÓN
 \*------------------------------------*/
 /**
-* 
+*
 * Le asignamos la clase .nav al ul que contenga la navegación:
 
 		 <ul class="nav">
@@ -1173,28 +1428,26 @@ sub {
 			<li><a href="services.html">Services</a></li>
 			<li><a href="contact.html">Contact us</a></li>
 		</ul>
-* 
+*
 */
-.nav::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+/* line 19, ../src/scss/componentes/_navegacion.scss */
 .nav > li {
   position: relative;
   display: inline-block;
 }
+/* line 23, ../src/scss/componentes/_navegacion.scss */
 .nav > li > a {
   position: relative;
   padding: 12px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
+/* line 27, ../src/scss/componentes/_navegacion.scss */
+.nav > li > a:hover, .nav > li > a:focus {
   text-decoration: none;
   background-color: #00c9fe;
 }
+
 /**
-* 
+*
 * .nav--fit extiende a .nav y alarga la navegación
 * para que ocupe el 100% de su contenedor
 
@@ -1205,20 +1458,24 @@ sub {
 			<li><a href="services.html">Services</a></li>
 			<li><a href="contact.html">Contact us</a></li>
 		</ul>
-* 
+*
 */
+/* line 50, ../src/scss/componentes/_navegacion.scss */
 .nav--fit {
   display: table;
   width: 100%;
 }
+/* line 54, ../src/scss/componentes/_navegacion.scss */
 .nav--fit > li {
   display: table-cell;
 }
+/* line 57, ../src/scss/componentes/_navegacion.scss */
 .nav--fit > li > a {
   display: block;
 }
+
 /**
-* 
+*
 * .nav--tabs extiende a .nav y crea la base para una navegación
 * en pestañas.
 
@@ -1229,17 +1486,21 @@ sub {
 			<li><a href="services.html">Services</a></li>
 			<li><a href="contact.html">Contact us</a></li>
 		</ul>
-* 
+*
 */
+/* line 79, ../src/scss/componentes/_navegacion.scss */
 .nav--tabs {
   border-bottom: 1px solid #00c9fe;
 }
+/* line 81, ../src/scss/componentes/_navegacion.scss */
 .nav--tabs > li {
   margin-bottom: -1px;
 }
+/* line 83, ../src/scss/componentes/_navegacion.scss */
 .nav--tabs > li > a {
   display: block;
 }
+
 /*------------------------------------*\
     $PAGINACION
 \*------------------------------------*/
@@ -1263,68 +1524,87 @@ sub {
  *
  * Thanks to @ccswizardry for this simple chunk of code!
  */
+/* line 26, ../src/scss/componentes/_paginacion.scss */
 .pagination {
   text-align: center;
   /**
-     * Remove whitespace caused by `inline-block`.
-     */
+   * Remove whitespace caused by `inline-block`.
+   */
   letter-spacing: -0.31em;
   word-spacing: -0.43em;
 }
+
+/* line 34, ../src/scss/componentes/_paginacion.scss */
 .pagination > li {
   display: inline-block;
   padding: 12PX;
   letter-spacing: normal;
   word-spacing: normal;
 }
+
+/* line 40, ../src/scss/componentes/_paginacion.scss */
 .pagination > li > a {
   padding: 12PX;
   margin: -12px;
 }
+
+/* line 44, ../src/scss/componentes/_paginacion.scss */
 .pagination__first a:before {
   content: "\00AB" "\00A0";
 }
+
+/* line 47, ../src/scss/componentes/_paginacion.scss */
 .pagination__last a:after {
   content: "\00A0" "\00BB";
 }
+
 /*------------------------------------*\
     $FORMULARIOS
 \*------------------------------------*/
+/* line 5, ../src/scss/componentes/_formularios.scss */
 form {
   margin: 0 0 1.5em 0;
 }
+/* line 8, ../src/scss/componentes/_formularios.scss */
 form fieldset {
   margin-bottom: 1.5em;
   padding: 0;
   border-width: 0;
 }
+/* line 13, ../src/scss/componentes/_formularios.scss */
 form legend {
   display: block;
   width: 100%;
   margin-bottom: 3em;
   *margin-left: -7px;
   padding: 0;
-  color: #262626;
+  color: darkergrey;
   border: 0;
   border-bottom: 1px solid #bfbfbf;
   white-space: normal;
 }
+/* line 24, ../src/scss/componentes/_formularios.scss */
 form legend small {
   font-size: 14px;
   font-size: 0.875rem;
   color: #bfbfbf;
 }
+/* line 29, ../src/scss/componentes/_formularios.scss */
 form p {
   margin-bottom: 0.75em;
 }
+/* line 32, ../src/scss/componentes/_formularios.scss */
 form ul {
   list-style-type: none;
   margin: 0 0 1.5em 0;
   padding: 0;
 }
+/* line 37, ../src/scss/componentes/_formularios.scss */
 form br {
   display: none;
 }
+
+/* line 45, ../src/scss/componentes/_formularios.scss */
 label,
 input,
 button,
@@ -1336,6 +1616,8 @@ textarea {
   vertical-align: baseline;
   *vertical-align: middle;
 }
+
+/* line 54, ../src/scss/componentes/_formularios.scss */
 input,
 button,
 select,
@@ -1346,18 +1628,23 @@ textarea {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+/* line 58, ../src/scss/componentes/_formularios.scss */
 label {
   display: block;
   margin-bottom: 0.1875em;
   font-weight: bold;
-  color: #262626;
+  color: darkergrey;
   cursor: pointer;
 }
+/* line 67, ../src/scss/componentes/_formularios.scss */
 label input,
 label textarea,
 label select {
   display: block;
 }
+
+/* line 73, ../src/scss/componentes/_formularios.scss */
 input,
 textarea,
 select {
@@ -1365,21 +1652,28 @@ select {
   width: 100%;
   padding: 4px;
   margin-bottom: 0.375em;
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid #bfbfbf;
-  color: #262626;
+  color: darkergrey;
 }
+/* line 82, ../src/scss/componentes/_formularios.scss */
 input:hover,
 textarea:hover,
 select:hover {
-  border-color: #808080;
+  border-color: gray;
 }
+
+/* line 87, ../src/scss/componentes/_formularios.scss */
 .input-mini {
   width: 60px;
 }
+
+/* line 90, ../src/scss/componentes/_formularios.scss */
 .input-small {
   width: 90px;
 }
+
+/* line 95, ../src/scss/componentes/_formularios.scss */
 input[type="image"],
 input[type="checkbox"],
 input[type="radio"] {
@@ -1392,6 +1686,8 @@ input[type="radio"] {
   cursor: pointer;
   border: 0 \9;
 }
+
+/* line 106, ../src/scss/componentes/_formularios.scss */
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
@@ -1402,12 +1698,15 @@ input[type="radio"] {
   *width: 13px;
   *height: 13px;
 }
+
+/* line 112, ../src/scss/componentes/_formularios.scss */
 input[type="image"] {
   border: 0;
   -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
+
+/* line 116, ../src/scss/componentes/_formularios.scss */
 input[type="file"] {
   width: auto;
   padding: initial;
@@ -1416,9 +1715,10 @@ input[type="file"] {
   background-color: transparent;
   background-color: initial;
   -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
+
+/* line 127, ../src/scss/componentes/_formularios.scss */
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -1427,40 +1727,57 @@ input[type="submit"] {
   cursor: pointer;
   *overflow: visible;
 }
+
+/* line 134, ../src/scss/componentes/_formularios.scss */
 select,
 input[type="file"] {
   height: 28px;
   *margin-top: 4px;
   line-height: 28px;
 }
+
+/* line 139, ../src/scss/componentes/_formularios.scss */
 select {
-  background-color: #ffffff;
+  background-color: white;
   font-size: 13px;
   font-size: 0.8125rem;
 }
+
+/* line 144, ../src/scss/componentes/_formularios.scss */
 select[multiple],
 select[size] {
   height: auto;
 }
+
+/* line 147, ../src/scss/componentes/_formularios.scss */
 textarea {
   resize: vertical;
+  overflow: auto;
   height: auto;
   overflow: auto;
   vertical-align: top;
 }
+
+/* line 153, ../src/scss/componentes/_formularios.scss */
 input[type="hidden"] {
   display: none;
 }
+
+/* line 157, ../src/scss/componentes/_formularios.scss */
 .radio,
 .checkbox {
   padding-left: 18px;
   font-weight: normal;
 }
+
+/* line 162, ../src/scss/componentes/_formularios.scss */
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
   float: left;
   margin-left: -18px;
 }
+
+/* line 167, ../src/scss/componentes/_formularios.scss */
 .radio.inline,
 .checkbox.inline {
   display: inline-block;
@@ -1468,10 +1785,14 @@ input[type="hidden"] {
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+/* line 174, ../src/scss/componentes/_formularios.scss */
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
 }
+
+/* line 184, ../src/scss/componentes/_formularios.scss */
 input[disabled],
 select[disabled],
 textarea[disabled],
@@ -1483,50 +1804,69 @@ textarea[readonly] {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* line 191, ../src/scss/componentes/_formularios.scss */
 input:focus,
 textarea:focus {
   border-color: #00a1cb, 40%;
   outline: 0;
   outline: thin dotted \9;
 }
+
+/* line 199, ../src/scss/componentes/_formularios.scss */
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
   -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
+
+/* line 202, ../src/scss/componentes/_formularios.scss */
 ::-webkit-input-placeholder {
   font-size: 14px;
   font-size: 0.875rem;
 }
+
+/* line 205, ../src/scss/componentes/_formularios.scss */
 input:-moz-placeholder {
   font-size: 14px;
   font-size: 0.875rem;
 }
+
+/* line 211, ../src/scss/componentes/_formularios.scss */
 .help-block,
 .help-inline {
-  color: #808080;
+  color: gray;
 }
+
+/* line 214, ../src/scss/componentes/_formularios.scss */
 .help-block {
   display: block;
   margin-bottom: 0.75em;
 }
+
+/* line 218, ../src/scss/componentes/_formularios.scss */
 .help-inline {
   display: inline-block;
   vertical-align: middle;
   padding-left: 5px;
 }
+
+/* line 227, ../src/scss/componentes/_formularios.scss */
 .form-inline input,
 .form-inline textarea,
 .form-inline select {
   display: inline-block;
   margin-bottom: 0;
 }
+
+/* line 231, ../src/scss/componentes/_formularios.scss */
 .form-inline label {
   display: inline-block;
 }
+
+/* line 236, ../src/scss/componentes/_formularios.scss */
 .form-inline .radio,
 .form-inline .checkbox,
 .form-inline .radio {
@@ -1534,26 +1874,36 @@ input:-moz-placeholder {
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+/* line 242, ../src/scss/componentes/_formularios.scss */
 .form-inline .radio input[type="radio"],
 .form-inline .checkbox input[type="checkbox"] {
   float: left;
   margin-left: 0;
   margin-right: 3px;
 }
+
+/* line 251, ../src/scss/componentes/_formularios.scss */
 .form-search input,
 .form-search textarea,
 .form-search select {
   display: inline-block;
   margin-bottom: 0;
 }
+
+/* line 255, ../src/scss/componentes/_formularios.scss */
 .form-search .search-query {
   padding-left: 14px;
   padding-right: 14px;
   margin-bottom: 0;
 }
+
+/* line 260, ../src/scss/componentes/_formularios.scss */
 .form-search label {
   display: inline-block;
 }
+
+/* line 265, ../src/scss/componentes/_formularios.scss */
 .form-search .radio,
 .form-search .checkbox,
 .form-inline .radio {
@@ -1561,47 +1911,62 @@ input:-moz-placeholder {
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+/* line 271, ../src/scss/componentes/_formularios.scss */
 .form-search .radio input[type="radio"],
 .form-search .checkbox input[type="checkbox"] {
   float: left;
   margin-left: 0;
   margin-right: 3px;
 }
+
 /**
 * Validamos los formularios que son "required": http://coolvillage.es/ayuda-al-usuario-a-rellenar-formularios-con-css/
 */
+/* line 281, ../src/scss/componentes/_formularios.scss */
 input:required:focus:invalid {
   background-color: #fef2e7;
 }
+
+/* line 284, ../src/scss/componentes/_formularios.scss */
 input:required:focus:valid {
   background-color: #d7edd7;
 }
+
 /*------------------------------------*\
     $SITIO
 \*------------------------------------*/
 @-webkit-viewport {
   width: device-width;
 }
+
 @-moz-viewport {
   width: device-width;
 }
+
 @-ms-viewport {
   width: device-width;
 }
+
 @-o-viewport {
   width: device-width;
 }
+
 @viewport {
   width: device-width;
 }
+
+/* line 21, ../src/scss/layout/_sitio.scss */
 html {
-  background: #ffffff;
+  background: white;
   font-size: 100%;
   -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: #ffffff;
+  -webkit-tap-highlight-color: white;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+
+/* line 29, ../src/scss/layout/_sitio.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1611,8 +1976,9 @@ body {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5em;
-  color: #262626;
+  color: darkergrey;
 }
+
 /**
 * A partir de aquí es donde debes escribir los estilos de posicionamiento
 * y detalles que forman tu web. Disfruta!
@@ -1620,13 +1986,7 @@ body {
 /*------------------------------------*\
     $TEXTURAS
 \*------------------------------------*/
-/**
-* Todas las cajas, popups y elementos informativos
-*
-* Más estilos adicionales:
-* http://twitter.github.com/bootstrap/components.html#alerts"
-* https://github.com/twitter/bootstrap/blob/master/less/alerts.less"
-*/
+/* line 9, ../src/scss/componentes/_texturas.scss */
 .alert {
   margin-bottom: 1.5em;
   padding: 8px 35px 8px 14px;
@@ -1638,6 +1998,11 @@ body {
   color: #904809;
   border-radius: 2px;
 }
+/* line 19, ../src/scss/componentes/_texturas.scss */
+.alert .alert-heading {
+  color: inherit;
+}
+/* line 22, ../src/scss/componentes/_texturas.scss */
 .alert .close {
   position: relative;
   top: -2px;
@@ -1649,50 +2014,64 @@ body {
   line-height: 18px;
   color: inherit;
 }
-.alert--success {
+
+/* line 33, ../src/scss/componentes/_texturas.scss */
+.alert-success {
   background-color: #c5e6c5;
   border-color: #a2d6a2;
   color: #347834;
 }
-.alert--warning {
+
+/* line 38, ../src/scss/componentes/_texturas.scss */
+.alert-warning {
   background-color: #fee7c7;
   border-color: #fcd296;
   color: #c17305;
 }
-.alert--error {
+
+/* line 43, ../src/scss/componentes/_texturas.scss */
+.alert-error {
   background-color: #f4cac8;
   border-color: #eba19e;
   color: #da4f49;
 }
-.alert--info {
+
+/* line 47, ../src/scss/componentes/_texturas.scss */
+.alert-info {
   background-color: #cbebec;
   border-color: #7fcfd2;
   color: #236062;
 }
-.alert--inverse {
+
+/* line 52, ../src/scss/componentes/_texturas.scss */
+.alert-inverse {
   background-color: #414141;
-  border-color: #000000;
-  color: #ffffff;
+  border-color: black;
+  color: white;
 }
-.alert--block {
+
+/* line 59, ../src/scss/componentes/_texturas.scss */
+.alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
 }
-.alert--block .alert--heading {
+/* line 63, ../src/scss/componentes/_texturas.scss */
+.alert-block .alert-heading {
   margin-bottom: 0.1875em;
   font-size: inherit;
   font-weight: bold;
 }
-.alert--block > p,
-.alert--block > ul {
+/* line 69, ../src/scss/componentes/_texturas.scss */
+.alert-block > p,
+.alert-block > ul {
   margin-bottom: 0;
 }
-.alert--block p + p {
+/* line 72, ../src/scss/componentes/_texturas.scss */
+.alert-block p + p {
   margin-top: 5px;
 }
-/*------------------------------------*\
-    $BADGES
-\*------------------------------------*/
+
+/* line 78, ../src/scss/componentes/_texturas.scss */
 .badge {
   padding: 1px 9px 2px;
   font-size: 12px;
@@ -1700,7 +2079,7 @@ body {
   font-weight: bold;
   white-space: nowrap;
   border-radius: 2px;
-  color: #262626;
+  color: darkergrey;
   background-color: #00a1cb;
   -webkit-transition: background-color 0.25s 0 linear;
   -moz-transition: background-color 0.25s 0 linear;
@@ -1708,47 +2087,62 @@ body {
   -o-transition: background-color 0.25s 0 linear;
   transition: background-color 0.25s 0 linear;
 }
+/* line 88, ../src/scss/componentes/_texturas.scss */
 .badge:hover {
-  color: #262626;
+  color: darkergrey;
   text-decoration: none;
   cursor: pointer;
 }
-.badge--error {
+
+/* line 94, ../src/scss/componentes/_texturas.scss */
+.badge-error {
   background-color: #da4f49;
 }
-.badge--error:hover {
+/* line 98, ../src/scss/componentes/_texturas.scss */
+.badge-error:hover {
   background-color: #9d2520;
 }
-.badge--warning {
+
+/* line 103, ../src/scss/componentes/_texturas.scss */
+.badge-warning {
   background-color: #faa732;
 }
-.badge--warning:hover {
+/* line 107, ../src/scss/componentes/_texturas.scss */
+.badge-warning:hover {
   background-color: #c17305;
 }
-.badge--success {
+
+/* line 112, ../src/scss/componentes/_texturas.scss */
+.badge-success {
   background-color: #5bb75b;
 }
-.badge--success:hover {
+/* line 116, ../src/scss/componentes/_texturas.scss */
+.badge-success:hover {
   background-color: #347834;
 }
-.badge--info {
+
+/* line 121, ../src/scss/componentes/_texturas.scss */
+.badge-info {
   background-color: #a5dddf;
   color: #236062;
 }
-.badge--info:hover {
+/* line 125, ../src/scss/componentes/_texturas.scss */
+.badge-info:hover {
   background-color: #5ac1c4;
 }
-.badge--inverse {
+
+/* line 129, ../src/scss/componentes/_texturas.scss */
+.badge-inverse {
   background-color: #414141;
-  color: #ffffff;
+  color: white;
 }
-.badge--inverse:hover {
+/* line 133, ../src/scss/componentes/_texturas.scss */
+.badge-inverse:hover {
   background-color: #0e0e0e;
-  color: #ffffff;
+  color: white;
 }
-/*------------------------------------*\
-    $GRADIENTES
-\*------------------------------------*/
+
+/* line 140, ../src/scss/componentes/_texturas.scss */
 .basegrad {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00a1cb), to(#007998));
   background-image: -webkit-linear-gradient(top, #00a1cb, #007998);
@@ -1759,6 +2153,8 @@ body {
   background-image: linear-gradient(top, #00a1cb, #007998);
   background-repeat: repeat-x;
 }
+
+/* line 143, ../src/scss/componentes/_texturas.scss */
 .errorgrad {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00a1cb), to(#c72f29));
   background-image: -webkit-linear-gradient(top, #00a1cb, #c72f29);
@@ -1769,16 +2165,20 @@ body {
   background-image: linear-gradient(top, #00a1cb, #c72f29);
   background-repeat: repeat-x;
 }
+
+/* line 146, ../src/scss/componentes/_texturas.scss */
 .greygrad {
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#d9d9d9));
-  background-image: -webkit-linear-gradient(top, #ffffff, #d9d9d9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#d9d9d9));
+  background-image: -webkit-linear-gradient(top, white, #d9d9d9);
   background-color: #d9d9d9;
-  background-image: -moz-linear-gradient(top, #ffffff, #d9d9d9);
-  background-image: -ms-linear-gradient(top, #ffffff, #d9d9d9);
-  background-image: -o-linear-gradient(top, #ffffff, #d9d9d9);
+  background-image: -moz-linear-gradient(top, white, #d9d9d9);
+  background-image: -ms-linear-gradient(top, white, #d9d9d9);
+  background-image: -o-linear-gradient(top, white, #d9d9d9);
   background-image: linear-gradient(top, #ffffff, #d9d9d9);
   background-repeat: repeat-x;
 }
+
+/* line 149, ../src/scss/componentes/_texturas.scss */
 .infograd {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a5dddf), to(#7fcfd2));
   background-image: -webkit-linear-gradient(top, #a5dddf, #7fcfd2);
@@ -1789,6 +2189,8 @@ body {
   background-image: linear-gradient(top, #a5dddf, #7fcfd2);
   background-repeat: repeat-x;
 }
+
+/* line 152, ../src/scss/componentes/_texturas.scss */
 .inversegrad {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#414141), to(#272727));
   background-image: -webkit-linear-gradient(top, #414141, #272727);
@@ -1799,6 +2201,8 @@ body {
   background-image: linear-gradient(top, #414141, #272727);
   background-repeat: repeat-x;
 }
+
+/* line 155, ../src/scss/componentes/_texturas.scss */
 .successgrad {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bb75b), to(#449b44));
   background-image: -webkit-linear-gradient(top, #5bb75b, #449b44);
@@ -1809,6 +2213,8 @@ body {
   background-image: linear-gradient(top, #5bb75b, #449b44);
   background-repeat: repeat-x;
 }
+
+/* line 158, ../src/scss/componentes/_texturas.scss */
 .warninggrad {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#faa732), to(#f39106));
   background-image: -webkit-linear-gradient(top, #faa732, #f39106);
@@ -1819,113 +2225,100 @@ body {
   background-image: linear-gradient(top, #faa732, #f39106);
   background-repeat: repeat-x;
 }
-/*------------------------------------*\
-    $WELLS
-\*------------------------------------*/
+
+/* line 165, ../src/scss/componentes/_texturas.scss */
 .well {
   min-height: 21px;
   padding: 11px;
   border-radius: 2px;
   margin-bottom: 1.5em;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 10px #e6e6e6;
-  -moz-box-shadow: inset 0 1px 10px #e6e6e6;
-  box-shadow: inset 0 1px 10px #e6e6e6;
+  background-color: white;
+  border: 1px solid #99eaff;
+  -webkit-box-shadow: inset 0 1px 10px #ccf4ff;
+  box-shadow: inset 0 1px 10px #ccf4ff;
 }
+/* line 174, ../src/scss/componentes/_texturas.scss */
 .well p:last-child {
   margin-bottom: 0;
 }
-.well--large {
+
+/* line 178, ../src/scss/componentes/_texturas.scss */
+.well-large {
   padding: 22px;
 }
-.well--small {
+
+/* line 181, ../src/scss/componentes/_texturas.scss */
+.well-small {
   padding: 6px;
 }
+
+/* line 185, ../src/scss/componentes/_texturas.scss */
 ::-moz-selection {
-  background-color: #ffffff;
+  background-color: white;
   color: #00a1cb;
   text-shadow: none;
 }
+
+/* line 190, ../src/scss/componentes/_texturas.scss */
 ::selection {
-  background-color: #ffffff;
+  background-color: white;
   color: #00a1cb;
   text-shadow: none;
 }
+
 /*------------------------------------*\
     $BREAKPOINTS
 \*------------------------------------*/
 /*
- * Cada Mediaquery se basará en la variable @bp$ que definimos en lib/variables.less
- * e incluirá el archivo bp$.less. 
- * Recordad que el primer mediaquery es la ausencia de mediaquery tal y como
- * lo haríamos si empezaramos mobile first.
- */
-/*
- * Primer Breakpoint
+ * Cada Mediaquery se basará en la variable $bp$ e incluirá el archivo bp$.less
  */
 @media only screen and (min-width: 30em) {
   /*------------------------------------*\
-    $BREAKPOINT_1
-\*------------------------------------*/
+      $BREAKPOINT_1
+  \*------------------------------------*/
   /*
- * Estilos que entrarán en el breakpoint basado en la variable @bp1
- */
+   * Estilos que entrarán en el breakpoint basado en la variable $bp1
+   */
 }
-/*
- * Segundo Breakpoint
- */
-@media only screen and (min-width: only screen and (min-width: 37.5em)) {
+@media only screen and (min-width: 37.5em) {
   /*------------------------------------*\
-    $BREAKPOINT_2
-\*------------------------------------*/
+      $BREAKPOINT_2
+  \*------------------------------------*/
   /*
- * Estilos que entrarán en el breakpoint basado en la variable @bp2
- */
+   * Estilos que entrarán en el breakpoint basado en la variable $bp2
+   */
 }
-/*
- * Tercer Breakpoint
- */
-@media only screen and (min-width: only screen and (min-width: 48em)) {
+@media only screen and (min-width: 48em) {
   /*------------------------------------*\
-    $BREAKPOINT_3
-\*------------------------------------*/
+      $BREAKPOINT_3
+  \*------------------------------------*/
   /*
- * Estilos que entrarán en el breakpoint basado en la variable @bp3
- */
+   * Estilos que entrarán en el breakpoint basado en la variable $bp3
+   */
 }
-/*
- * Cuarto Breakpoint
- */
-@media only screen and (min-width: only screen and (min-width: 56.25em)) {
+@media only screen and (min-width: 56.25em) {
   /*------------------------------------*\
-    $BREAKPOINT_4
-\*------------------------------------*/
+      $BREAKPOINT_4
+  \*------------------------------------*/
   /*
- * Estilos que entrarán en el breakpoint basado en la variable @bp4
- */
+   * Estilos que entrarán en el breakpoint basado en la variable $bp4
+   */
 }
-/*
- * Quinto Breakpoint
- */
-@media only screen and (min-width: only screen and (min-width: 68.25em)) {
+@media only screen and (min-width: 68.75em) {
   /*------------------------------------*\
-    $BREAKPOINT_5
-\*------------------------------------*/
+      $BREAKPOINT_5
+  \*------------------------------------*/
   /*
- * Estilos que entrarán en el breakpoint basado en la variable @bp5
- */
+   * Estilos que entrarán en el breakpoint basado en la variable $bp5
+   */
 }
-/*
- * Densidades mayores a @densityBP
- */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /*------------------------------------*\
-    $2x
-\*------------------------------------*/
+      $2x
+  \*------------------------------------*/
   /*
- * Breakpoint para dispositivos retina 
- */
+   * Breakpoint para dispositivos retina
+   */
 }
 /*------------------------------------*\
     $PATRONES
@@ -1936,113 +2329,145 @@ body {
  * es recomendable eliminar su inclusión en el style.less
  * a la hora de compilar el CSS de la web.
  */
+/* line 11, ../src/scss/_patron.scss */
 section {
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1024px;
   margin-bottom: 3em;
 }
-section::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
+/* line 16, ../src/scss/_patron.scss */
 .altfont {
   font-family: Georgia, Times, "Times New Roman";
 }
+
+/* line 20, ../src/scss/_patron.scss */
 .basefont::after {
-  content: ': "Helvetica Neue", Helvetica, Arial, sans-serif';
+  content: '"Helvetica Neue", Helvetica, Arial, sans-serif';
 }
+
+/* line 23, ../src/scss/_patron.scss */
 .altfont::after {
-  content: ': Georgia, Times, "Times New Roman"';
+  content: 'Georgia, Times, "Times New Roman"';
 }
+
+/* line 26, ../src/scss/_patron.scss */
 .code::after {
-  content: ': "Courier New", monospace';
+  content: '"Courier New", monospace';
 }
+
+/* line 31, ../src/scss/_patron.scss */
 .swatch {
   margin: 0 24px 1.5em 0;
   padding: 0;
   float: left;
 }
+
+/* line 36, ../src/scss/_patron.scss */
 .swatch-row {
   display: block;
   margin: 0;
   padding: 0;
   width: 200px;
 }
+
+/* line 43, ../src/scss/_patron.scss */
 .swatch-row span {
   display: block;
   float: left;
   width: 100px;
   height: 100px;
 }
+
+/* line 52, ../src/scss/_patron.scss */
 .swatch-base span:nth-child(1) {
   background-color: #00a1cb;
 }
+/* line 55, ../src/scss/_patron.scss */
 .swatch-base small::after {
-  content: " #00a1cb";
+  content: "#00a1cb";
   color: #00a1cb;
   display: block;
 }
+
+/* line 67, ../src/scss/_patron.scss */
 .swatch-secondary span:nth-child(1) {
   background-color: #cb2a00;
 }
+/* line 70, ../src/scss/_patron.scss */
 .swatch-secondary small::after {
-  content: " #cb2a00";
+  content: "#cb2a00";
   color: #cb2a00;
   display: block;
 }
+
+/* line 82, ../src/scss/_patron.scss */
 .swatch-compcolor span:nth-child(1) {
   background-color: #da802d;
 }
+/* line 85, ../src/scss/_patron.scss */
 .swatch-compcolor small::after {
   content: " #da802d";
   color: #da802d;
   display: block;
 }
+
+/* line 96, ../src/scss/_patron.scss */
 .swatch-alert span:nth-child(1) {
   background-color: #fce4cf;
 }
+/* line 99, ../src/scss/_patron.scss */
 .swatch-alert small::after {
-  content: " #fce4cf";
+  content: "#fce4cf";
   color: #fce4cf;
   display: block;
 }
+
+/* line 112, ../src/scss/_patron.scss */
 .swatch-error span:nth-child(1) {
   background-color: #da4f49;
 }
+/* line 115, ../src/scss/_patron.scss */
 .swatch-error small::after {
-  content: " #da4f49";
+  content: "#da4f49";
   color: #da4f49;
   display: block;
 }
+
+/* line 127, ../src/scss/_patron.scss */
 .swatch-info span:nth-child(1) {
   background-color: #a5dddf;
 }
+/* line 131, ../src/scss/_patron.scss */
 .swatch-info small::after {
-  content: " #a5dddf";
+  content: "#a5dddf";
   color: #a5dddf;
   display: block;
 }
+
+/* line 143, ../src/scss/_patron.scss */
 .swatch-success span:nth-child(1) {
   background-color: #5bb75b;
 }
+/* line 146, ../src/scss/_patron.scss */
 .swatch-success small::after {
-  content: " #5bb75b";
+  content: "#5bb75b";
   color: #5bb75b;
   display: block;
 }
+
+/* line 159, ../src/scss/_patron.scss */
 .swatch-warning span:nth-child(1) {
   background-color: #faa732;
 }
+/* line 163, ../src/scss/_patron.scss */
 .swatch-warning small::after {
-  content: " #faa732";
+  content: "#faa732";
   color: #faa732;
   display: block;
 }
-.caja-animacion,
-.hover {
+
+/* line 172, ../src/scss/_patron.scss */
+.caja-animacion, .hover {
   width: 100%;
   padding: 1em;
   background-color: #bfbfbf;
@@ -2052,14 +2477,14 @@ section::after {
   margin-bottom: 1em;
   border-radius: 2px;
 }
-.caja-animacion .cursor,
-.hover .cursor {
+/* line 181, ../src/scss/_patron.scss */
+.caja-animacion .cursor, .hover .cursor {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   width: 20px;
-  background-color: #808080;
+  background-color: gray;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 2px;
@@ -2081,8 +2506,8 @@ section::after {
   -o-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
 }
-.caja-animacion:hover .cursor,
-.hover:hover .cursor {
+/* line 191, ../src/scss/_patron.scss */
+.caja-animacion:hover .cursor, .hover:hover .cursor {
   left: 100%;
   margin-left: -20px;
   -webkit-border-top-right-radius: 2px;
@@ -2101,6 +2526,8 @@ section::after {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
+
+/* line 197, ../src/scss/_patron.scss */
 .hover {
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -2108,146 +2535,25 @@ section::after {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+/* line 199, ../src/scss/_patron.scss */
 .hover:hover {
   background-color: #00a1cb;
 }
+/* line 202, ../src/scss/_patron.scss */
 .hover strong::after {
-  content: ': 0.3s';
+  content: ": 0.3s";
   font-weight: normal;
 }
+
+/* line 208, ../src/scss/_patron.scss */
 .transition::after {
-  content: ': 0.8s';
+  content: ": 0.8s";
   font-weight: normal;
 }
+
+/* line 214, ../src/scss/_patron.scss */
 figure {
   width: 24%;
   float: left;
   margin-right: 1%;
-}
-/*------------------------------------*\
-    $DEBUG
-\*------------------------------------*/
-/**
- * Activa esta hoja de estilos para detectar visualmente cualquier
- * anidación impropia o marcado potencialmente inválido.
- *
- * Rojo           ==      Definitivamente un error
- * Amarillo       ==      a revisar
- * Ninguno        ==      debería estar bien
- *
- * Este método de validación no es más que una guía, no te bases en el
- * para validar tu marcado
- *
- */
-/**
- * Hay elementos vacíos?
- */
-:empty {
-  outline: 5px solid yellow;
-}
-/**
- * Las imágenes requieren el atributo ALT, un ALT vacío no es del todo malo
- * pero una imagen sin ALT definitivamente está mal.
- */
-img {
-  outline: 5px solid red;
-}
-img[alt] {
-  outline: none;
-}
-img[alt=""] {
-  outline: 5px solid yellow;
-}
-/**
- * Los links algunas veces, no siempre, se benefician del atributo "title".
- * Links sin 'title' no son inválidos, pero es buena idea revisar.
- */
-a {
-  outline: 5px solid yellow;
-}
-a[title] {
-  outline: none;
-}
-/**
- * Revisa los "href" con contenido dudoso.
- */
-a[href="#"],
-a[href*="javascript"] {
-  outline: 5px solid yellow;
-}
-/**
- * El atributo 'target=""' es.... bueno, revisa.
- */
-a[target] {
-  outline: 5px solid yellow;
-}
-/**
- * Asegúrate que una lista solo anida LI's
- */
-ul > *:not(li),
-ol > *:not(li) {
-  outline: 5px solid red;
-}
-/**
- * Deberíamos asignar un atributo 'scope' a los th
- * http://bit.ly/1aHBDgW
- */
-th {
-  outline: 5px solid yellow;
-}
-th[scope] {
-  outline: none;
-}
-/**
- * los tr hijos de 'table' no son buenos, ¿necesitabas un 'thead' / 'tbody'?
- */
-table > tr {
-  outline: 5px solid yellow;
-}
-/**
- * `tfoot` debe estar *antes* de `tbody`.
- */
-tbody + tfoot {
-  outline: 5px solid yellow;
-}
-/**
- * Forms necesitan del atributo `action`
- */
-form {
-  outline: 5px solid red;
-}
-form[action] {
-  outline: none;
-}
-/**
- * Varios elementos de formularios requieren atributos. 'input' necsita de 'type'
- * 'textarea' necesita `rows' y 'cols' y 'submit' necesita del atributo 'value'.
- */
-textarea,
-input {
-  outline: 5px solid red;
-}
-input[type] {
-  outline: none;
-}
-textarea[rows][cols] {
-  outline: none;
-}
-input[type=submit] {
-  outline: 5px solid red;
-}
-input[type=submit][value] {
-  outline: none;
-}
-/**
- * Evitamos estilos _inline_ a ser posible.
- */
-[style] {
-  outline: 5px solid yellow;
-}
-/**
- * Deberías evitar IDs para CSS.
- */
-[id] {
-  outline: 5px solid yellow;
 }
