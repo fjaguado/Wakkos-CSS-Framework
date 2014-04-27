@@ -87,29 +87,33 @@ module.exports = function(grunt) {
                 src: 'src/images/logo.jpg',
                 dest: 'img/favicons'
             }
+        },
+        // Ejecuta varias tareas en paralelo para optimizar la ejecución
+        concurrent: {
+            dev: [
+                'compass:dev',
+                'concat:prod'
+            ],
+            prepare: [
+                'compass:prod',
+                'concat:prod',
+                'favicons'
+            ],
+            optimize: [
+            	'cssmin:prod',
+            	'uglify:prod',
+            	'imagemin:prod'
+            ]
         }
 	});
-	// DEPENDENT PLUGINS =========================/
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-favicons');
-	grunt.loadNpmTasks('grunt-web-server');
 	// TASKS =====================================/
+	grunt.loadNpmTasks('grunt-favicons');
 	grunt.registerTask('default', [
-		'compass:prod',
-		'concat:prod',
-		'uglify:prod',
-		'favicons'
+		'concurrent:dev'
 	]);
 
 	grunt.registerTask('build', [
-		'compass:prod',
-		'cssmin:prod',
-		'concat:prod',
-		'uglify:prod',
-		'favicons',
-		'imagemin:prod',
+		'concurrent:prepare',
+		'concurrent:optimize'
 	]);
 };
