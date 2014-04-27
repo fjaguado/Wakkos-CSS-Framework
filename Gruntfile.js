@@ -1,5 +1,10 @@
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -7,42 +12,50 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: ['src/scss/**/*.scss'],
-				tasks: ['compass:dev'],
-				options: {
-					livereload: true,
-				}
+				tasks: ['compass:dev']
 			},
 			js: {
 				files: ['src/js/globals.js','src/js/events.js','src/js/functions/**/*.js'],
-				tasks: ['concat','uglify:prod'],
-				options: {
-					livereload: true
-				}
-			},
-			webpage: {
-				files: ['**/*.html'],
-				tasks: [],
-				options: {
-					livereload: true
-				}
+				tasks: ['concat']
 			}
 		},
+		// Compilamos Sass a CSS
 		compass: {
+			options: {
+				sassDir: 'src/scss',
+				cssDir: 'css',
+				force: true,
+				relativeAssets: false,
+				assetCacheBuster: false
+			},
             prod: {
-                options: {
-                    sassDir: 'src/scss',
-                    cssDir: 'css',
-                    environment: 'production',
-                    force: true
-                }
             },
             dev: {
                 options: {
-                    sassDir: 'src/scss',
-                    cssDir: 'css',
-                    force: true
+                    debugInfo: true
                 }
             }
+        },
+        // Minimizamos el código CSS
+        cssmin: {
+        	prod: {
+        		files: {
+        			'css/style.css': [
+        				'css/style.css'
+    				]
+        		}
+        	}
+        },
+        // Minimizamos y optimizamos las imágenes
+        imagemin: {
+        	prod: {
+        		files: [{
+        			expand: true,
+        			cwd: 'img',
+        			src: '**/*.{gif,jpeg,jpg,png}',
+        			dest: 'img'
+        		}]
+        	}
         },
 		concat: {
 			options:{
@@ -74,16 +87,7 @@ module.exports = function(grunt) {
                 src: 'src/images/logo.jpg',
                 dest: 'img/favicons'
             }
-        },
-        web_server: {
-			options: {
-				cors: true,
-				port: 8000,
-				nevercache: true,
-				logRequests: true
-			},
-			foo: 'bar' // For some reason an extra key with a non-object value is necessary
-		},
+        }
 	});
 	// DEPENDENT PLUGINS =========================/
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -98,5 +102,14 @@ module.exports = function(grunt) {
 		'concat:prod',
 		'uglify:prod',
 		'favicons'
+	]);
+
+	grunt.registerTask('build', [
+		'compass:prod',
+		'cssmin:prod',
+		'concat:prod',
+		'uglify:prod',
+		'favicons',
+		'imagemin:prod',
 	]);
 };
