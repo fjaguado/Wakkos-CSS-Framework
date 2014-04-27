@@ -19,11 +19,15 @@ Esto instalará todas las dependencias descritas en el fichero `package.json`.
 
 Dentro de Gruntfile.js tenemos las diferentes tareas configuradas. Dichas tareas las podemos ejecutar por separado o invocar a otra tarea configurada con `registerTask` que no es más que una lista de tareas a realizar.
 
+###codekit
+
+Nos permite utilizar la sintaxis del programa CodeKit para modularizar usando ficheros HTML sin necesidad de ningún lenguaje por la parte de servidor (véase: PHP, ASP, Java...).
+
 ###compass
 
-Esta tarea se encarga de compilar nuestros ficheros `scss` a `css`. Está separada en dos entornos:
+Compila nuestros ficheros `scss` a `css`. Está separada en dos entornos:
 
-1. dev: el entorno de desarrollo. En este entorno se añade información adicional para debug.
+1. dev: el entorno de desarrollo. En este entorno se añade información adicional para depuración.
 2. prod: el entorno de producción.
 
 ###cssmin
@@ -32,26 +36,27 @@ Minimiza nuestro código CSS resultante para que ocupe menos y así ser más liv
 
 ###concat
 
-Se encarga de concatenar todos los ficheros que hemos añadido; en este caso, JavaScript. En este caso solo se ha configurado el entorno de producción dado que en ambos casos nos interesa tener solo un fichero por comodidad de inclusión en el proyecto. Se generará el fichero `js/scripts.js` que luego será utilizado por `uglify` para minimizar y ofuscar el código.
+Concatena los ficheros que queramos; en este caso, JavaScript. Solo se ha configurado el entorno de producción dado que en ambos casos nos interesa tener solo un fichero por comodidad de inclusión en el proyecto. Se generará el fichero `js/scripts.js` que luego será utilizado por `uglify` para minimizar y ofuscar el código.
 
 ###uglify
 
-El encargado de minimizar y ofuscar el `JavaScript` del proyecto. El fichero fuente será el generado por `concat` y lo guardarà como `js/scripts.min.js`.
+El encargado de minimizar y ofuscar el `JavaScript` del proyecto. El fichero fuente será el generado por `concat` y lo guardará como `js/scripts.min.js`.
 
 ###favicons
 
-Utiliza el fichero fuente `src/images/logo.jpg` para generar todos los favicons necesarios para el proyecto. En caso de querer utilizar un logo `.png` u otro formato, se debería modificar en el fichero `Gruntfile.js`.
+Utiliza el fichero fuente `src/images/logo.jpg` para generar todos los favicons necesarios para el proyecto. En caso de querer utilizar un logo `.png`, u otro formato, se debería modificar en el fichero `Gruntfile.js`.
 
 ###imagemin
 
-Optimiza las imágenes de nuestro directorio `img` para que así ocupen lo mínimo necesario y nuestro proyecto sea más ligero.
+Optimiza las imágenes de nuestro directorio `img` para que así ocupen lo mínimo posible y nuestro proyecto sea más ligero.
 
 ###watch
 
-Esta tarea es por lo que es tan útil Grunt. Según la configuración que hay acutalmente, está a la espera de cambios en los ficheros `sass` y `javascript` para realizar ciertas acciones.
+Es de lo más útil que se ha inventado en tiempo. Según la configuración que hay acutalmente, está a la espera de cambios en los ficheros `sass`,`javascript` y `CodeKit` para realizar ciertas acciones.
 
 1. `css`: está pendiente de cambios en los ficheros `scss`. En caso de detectar algún cambio, ejecuta la compilación y recarga el navegador ( Chrome ) automáticamente; si la extensión está activa.
 2. `js`: concatena, minimiza y ofusca los ficheros `JavaScript` del proyecto. También recarga el navegador.
+3. `codekit`: de varios ficheros HTML nos genera uno.
 
 ###concurrent
 

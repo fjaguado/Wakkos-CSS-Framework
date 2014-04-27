@@ -17,8 +17,22 @@ module.exports = function(grunt) {
 			js: {
 				files: ['src/js/globals.js','src/js/events.js','src/js/functions/**/*.js'],
 				tasks: ['concat']
-			}
+			},
+            kitfiles: {
+                files: ['patrones/index.kit', 'patrones/kit-files/**/*.html'],
+                tasks: ['codekit:prod']
+            }
 		},
+        codekit: {
+            options: {
+              // None yet
+            },
+            prod: {
+                files : {
+                    'patrones/index.html' : 'patrones/index.kit'
+                }
+            },
+        },
 		// Compilamos Sass a CSS
 		compass: {
 			options: {
@@ -107,7 +121,6 @@ module.exports = function(grunt) {
         }
 	});
 	// TASKS =====================================/
-	grunt.loadNpmTasks('grunt-favicons');
 	grunt.registerTask('default', [
 		'concurrent:dev'
 	]);
