@@ -8,6 +8,7 @@
  * o comentes su inclusión para no tener estilos innecesarios en tu CSS final
  * y optimizar lo máximo posible.
  */
+$media-queries-supported : true;
 
 @import "contenido.scss";
 
@@ -15,7 +16,7 @@
 
 @import "lib/mixins.scss";
 
-@import "lib/helpers.scss";
+@import "lib/placeholders.scss";
 
 @import "componentes/reset.scss";
 
@@ -43,7 +44,4 @@
 
 @import "layout/breakpoints.scss";
 
-
-//@import "patron.scss"; // Deberías eliminar/comentar esto, se usa solo para patrones.html
-
-//@import "debug.scss";  // Utilizado para comprobar que el marcado HTML no contenga errores
+// @import "debug.scss";  // Utilizado para comprobar que el marcado HTML no contenga errores

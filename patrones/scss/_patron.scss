@@ -8,10 +8,47 @@
  * a la hora de compilar el CSS de la web.
  */
 
+ [role="banner"] {
+	@extend %max-width;
+	@extend %clearfix;
+	background-color: $secondary;
+	text-align: center;
+	margin-bottom: $baselineheight;
+	h1 {
+		color:$white;
+	}
+ }
+main {
+	@extend %max-width;
+}
 section {
-	width: 90%;
-	@extend .max-width;
+	width: 100%;
 	margin-bottom: $baselineheight * 2;
+	background-color: $white;
+	@extend %clearfix;
+	padding: ($baselineheight * 2) $gutterwidth $baselineheight;
+	border-radius:$radius * 2;
+	border:1px solid $lightgrey;
+	position:relative;
+	h2.title {
+		background-color:$secondary;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: $color-inverse;
+		position: absolute;
+		top:0;
+		left:0;
+		right: 0;
+		padding:($baselineheight / 4);
+		@include font-size(18);
+		small {
+			color: $black;
+			font-weight: bold;
+		}
+	}
+	.title {
+		color: $color-inverse;
+	}
 }
 .altfont {
 font-family:$altfont;
@@ -29,21 +66,24 @@ font-family:$altfont;
 // swatches
 
 .swatch {
-margin : 0 $gutterwidth $baselineheight 0;
-padding : 0;
+margin : 1%;
+padding : 1em;
+@extend %clearfix;
+width : 31.333%;
+border:1px solid $lightergrey;
 float:left; }
 
 .swatch-row {
 display : block;
 margin : 0;
 padding : 0;
-width : 200px; }
+ }
 
 
 .swatch-row span {
 display : block;
 float : left;
-width : 100px;
+width : 100%;
 height : 100px; }
 
 // base
@@ -94,11 +134,11 @@ height : 100px; }
 
 .swatch-alert {
 	span:nth-child(1) {
-		background-color:$alertcolor;
+		background-color:$color-alert;
 	}
 	small::after {
-		content: "#{$alertcolor}";
-		color: $alertcolor;
+		content: "#{$color-alert}";
+		color: $color-alert;
 		display: block;
 	}
 
@@ -110,11 +150,11 @@ height : 100px; }
 
 .swatch-error {
 	span:nth-child(1) {
-		background-color:$errorcolor;
+		background-color:$color-alert;
 	}
 	small::after {
-		content: "#{$errorcolor}";
-		color: $errorcolor;
+		content: "#{$color-alert}";
+		color: $color-alert;
 		display: block;
 	}
 
@@ -125,12 +165,12 @@ height : 100px; }
 
 .swatch-info {
 	span:nth-child(1) {
-		background-color:$infocolor;
+		background-color:$color-info;
 	}
 
 	small::after {
-		content: "#{$infocolor}";
-		color: $infocolor;
+		content: "#{$color-info}";
+		color: $color-info;
 		display: block;
 	}
 
@@ -141,11 +181,11 @@ height : 100px; }
 
 .swatch-success {
 	span:nth-child(1) {
-		background-color:$successcolor;
+		background-color:$color-success;
 	}
 	small::after {
-		content: "#{$successcolor}";
-		color: $successcolor;
+		content: "#{$color-success}";
+		color: $color-success;
 		display: block;
 	}
 
@@ -157,12 +197,12 @@ height : 100px; }
 
 .swatch-warning {
 	span:nth-child(1) {
-		background-color:$warningcolor;
+		background-color:$color-warning;
 	}
 
 	small::after {
-		content: "#{$warningcolor}";
-		color: $warningcolor;
+		content: "#{$color-warning}";
+		color: $color-warning;
 		display: block;
 	}
 
@@ -204,7 +244,6 @@ height : 100px; }
 			font-weight: normal;
 		}
 }
-
 .transition::after {
 			content: ': #{$animationtime}';
 			font-weight: normal;
@@ -212,7 +251,7 @@ height : 100px; }
 
 
 figure {
-	width: 24%;
+	width: 20%;
 	float: left;
-	margin-right: 1%;
+	margin-right: 5%;
 }
