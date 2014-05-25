@@ -17,155 +17,111 @@
 /**
  * Hay elementos vacíos?
  */
-/* line 26, ../src/scss/debug.scss */
 :empty {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * Las imágenes requieren el atributo ALT, un ALT vacío no es del todo malo
  * pero una imagen sin ALT definitivamente está mal.
  */
-/* line 35, ../src/scss/debug.scss */
 img {
-  outline: 5px solid red;
-}
+  outline: 5px solid red; }
 
-/* line 38, ../src/scss/debug.scss */
 img[alt] {
-  outline: none;
-}
+  outline: none; }
 
-/* line 41, ../src/scss/debug.scss */
 img[alt=""] {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * Los links algunas veces, no siempre, se benefician del atributo "title".
  * Links sin 'title' no son inválidos, pero es buena idea revisar.
  */
-/* line 50, ../src/scss/debug.scss */
 a {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
-/* line 53, ../src/scss/debug.scss */
 a[title] {
-  outline: none;
-}
+  outline: none; }
 
 /**
  * Revisa los "href" con contenido dudoso.
  */
-/* line 62, ../src/scss/debug.scss */
 a[href="#"],
 a[href*="javascript"] {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * El atributo 'target=""' es.... bueno, revisa.
  */
-/* line 70, ../src/scss/debug.scss */
 a[target] {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * Asegúrate que una lista solo anida LI's
  */
-/* line 80, ../src/scss/debug.scss */
 ul > *:not(li),
 ol > *:not(li) {
-  outline: 5px solid red;
-}
+  outline: 5px solid red; }
 
 /**
  * Deberíamos asignar un atributo 'scope' a los th
  * http://bit.ly/1aHBDgW
  */
-/* line 90, ../src/scss/debug.scss */
 th {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
-/* line 93, ../src/scss/debug.scss */
 th[scope] {
-  outline: none;
-}
+  outline: none; }
 
 /**
  * los tr hijos de 'table' no son buenos, ¿necesitabas un 'thead' / 'tbody'?
  */
-/* line 101, ../src/scss/debug.scss */
 table > tr {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * `tfoot` debe estar *antes* de `tbody`.
  */
-/* line 109, ../src/scss/debug.scss */
 tbody + tfoot {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * Forms necesitan del atributo `action`
  */
-/* line 117, ../src/scss/debug.scss */
 form {
-  outline: 5px solid red;
-}
+  outline: 5px solid red; }
 
-/* line 120, ../src/scss/debug.scss */
 form[action] {
-  outline: none;
-}
+  outline: none; }
 
 /**
  * Varios elementos de formularios requieren atributos. 'input' necsita de 'type'
  * 'textarea' necesita `rows' y 'cols' y 'submit' necesita del atributo 'value'.
  */
-/* line 130, ../src/scss/debug.scss */
 textarea,
 input {
-  outline: 5px solid red;
-}
+  outline: 5px solid red; }
 
-/* line 133, ../src/scss/debug.scss */
 input[type] {
-  outline: none;
-}
+  outline: none; }
 
-/* line 136, ../src/scss/debug.scss */
 textarea[rows][cols] {
-  outline: none;
-}
+  outline: none; }
 
-/* line 139, ../src/scss/debug.scss */
 input[type=submit] {
-  outline: 5px solid red;
-}
+  outline: 5px solid red; }
 
-/* line 142, ../src/scss/debug.scss */
 input[type=submit][value] {
-  outline: none;
-}
+  outline: none; }
 
 /**
  * Evitamos estilos _inline_ a ser posible.
  */
-/* line 150, ../src/scss/debug.scss */
 [style] {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }
 
 /**
  * Deberías evitar IDs para CSS.
  */
-/* line 158, ../src/scss/debug.scss */
 [id] {
-  outline: 5px solid yellow;
-}
+  outline: 5px solid yellow; }

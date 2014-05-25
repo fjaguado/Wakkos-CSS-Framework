@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: ['src/scss/**/*.scss'],
-				tasks: ['compass:dev']
+				tasks: ['sass:dev']
 			},
 			js: {
 				files: ['src/js/globals.js','src/js/events.js','src/js/functions/**/*.js'],
@@ -33,18 +33,24 @@ module.exports = function(grunt) {
                 }
             },
         },
-		// Compilamos Sass a CSS
-		compass: {
-			options: {
-				sassDir: 'src/scss',
-				cssDir: 'css',
-				force: true,
-				relativeAssets: false,
-				assetCacheBuster: false
-			},
+        sass: {
             prod: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/scss',
+                    src: ['*.scss'],
+                    dest: 'css',
+                    ext: '.css'
+                }]
             },
             dev: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/scss',
+                    src: ['*.scss'],
+                    dest: 'css',
+                    ext: '.css'
+                }],
                 options: {
                     debugInfo: true
                 }
@@ -54,9 +60,12 @@ module.exports = function(grunt) {
         cssmin: {
         	prod: {
         		files: {
-        			'css/style.css': [
+        			'css/style.min.css': [
         				'css/style.css'
-    				]
+    				],
+                    'css/lt-ie9.min.css': [
+                        'css/lt-ie9.css'
+                    ]
         		}
         	}
         },
@@ -105,11 +114,11 @@ module.exports = function(grunt) {
         // Ejecuta varias tareas en paralelo para optimizar la ejecución
         concurrent: {
             dev: [
-                'compass:dev',
+                'sass:dev',
                 'concat:prod'
             ],
             prepare: [
-                'compass:prod',
+                'sass:prod',
                 'concat:prod',
                 'favicons'
             ],
