@@ -23,7 +23,7 @@ Dentro de Gruntfile.js tenemos las diferentes tareas configuradas. Dichas tareas
 
 Nos permite utilizar la sintaxis del programa CodeKit para modularizar usando ficheros HTML sin necesidad de ningún lenguaje por la parte de servidor (véase: PHP, ASP, Java...).
 
-###compass
+###sass
 
 Compila nuestros ficheros `scss` a `css`. Está separada en dos entornos:
 
@@ -70,7 +70,7 @@ Nos permite ejecutar varias tareas en paralelo para aprovechar las posibilidades
 
 Se trata de la acción por defecto. Dicha acción se ejecutará si lanzamos `grunt` sin argumentos y ejecutará las siguientes tareas:
 
-1.`compass:dev`
+1.`sass:dev`
 2.`concat:prod`
 
 ###build
